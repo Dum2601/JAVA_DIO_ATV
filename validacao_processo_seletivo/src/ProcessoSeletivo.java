@@ -1,21 +1,23 @@
-package candidatura;
+import java.util.Scanner;
 
 public class ProcessoSeletivo {
+
     public static void main(String[] args) {
-        analisarCandidato(1900.0);
-        analisarCandidato(2200.0);
-        analisarCandidato(2000.0);
-    }
 
-    static void analisarCandidato(double salarioPretendido) {
-        double salarioBase = 2000.0;
+        Scanner scanner = new Scanner(System.in);
 
-        if (salarioBase > salarioPretendido) {
-            System.out.println("Ligar para o candidato");
-        } else if (salarioBase==salarioPretendido) {
-            System.out.println("Ligar para o candidato com contra proposta");
-        } else {
-            System.out.println("Aguardando o resultado dos demais candidatos");
+        System.out.println("Enter the first parameter:");
+        int firstParameter = scanner.nextInt();
+
+        System.out.println("Enter the second parameter:");
+        int secondParameter = scanner.nextInt();
+
+        try {
+            Contador.count(firstParameter, secondParameter);
+        } catch (ParametrosInvalidosException e) {
+            System.out.println(e.getMessage());
         }
+
+        scanner.close();
     }
 }
